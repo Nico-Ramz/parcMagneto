@@ -1,6 +1,6 @@
-package org.example.enums;
+package org.example.letter;
 
-public enum DNABaseEnum {
+public enum DNALetters {
     A,
     T,
     C,

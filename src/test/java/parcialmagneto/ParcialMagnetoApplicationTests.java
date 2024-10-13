@@ -1,4 +1,4 @@
-package org.demo.parcialmagneto;
+package parcialmagneto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
