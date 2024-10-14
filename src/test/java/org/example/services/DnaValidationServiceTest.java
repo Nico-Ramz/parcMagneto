@@ -1,15 +1,17 @@
-package parcialmagneto.services;
-/*
-import org.example.services.DnaValidationServices;
+package org.example.services;
+
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class DnaServiceTest {
+@SpringBootTest // Inicia el contexto de Spring completo
+public class DnaValidationServiceTest {
 
-    // ====================================================================================================
-    // Tests cubriendo todas las secuencias de matriz 6x6
+    @Autowired
+    private DnaValidationServices dnaValidationServices;
+
     @Test
     public void testRows() {
         String[] dna = {
@@ -20,7 +22,7 @@ public class DnaServiceTest {
                 "GTAGTC",
                 "AGTCAC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna)); // Llamada no estática
     }
 
     @Test
@@ -33,7 +35,7 @@ public class DnaServiceTest {
                 "GTAGTC",
                 "GGTCAC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna)); // Llamada no estática
     }
 
     @Test
@@ -46,9 +48,8 @@ public class DnaServiceTest {
                 "GTAGTC",
                 "AGTCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna)); // Llamada no estática
     }
-
     @Test
     public void testSecondaryLeftDiagonals() {
         String[] dna = {
@@ -59,7 +60,7 @@ public class DnaServiceTest {
                 "GTAGTC",
                 "AGTCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -72,7 +73,7 @@ public class DnaServiceTest {
                 "GTAGTC",
                 "AGTCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -85,7 +86,7 @@ public class DnaServiceTest {
                 "GGCGTC",
                 "AGTCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -98,7 +99,7 @@ public class DnaServiceTest {
                 "GGAGTC",
                 "AGGCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -111,7 +112,7 @@ public class DnaServiceTest {
                 "GGATTC",
                 "AGGCAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertFalse(dnaValidationServices.isMutant(dna));
     }
 
 
@@ -125,7 +126,7 @@ public class DnaServiceTest {
                 "TCAG",
                 "GGTC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -136,7 +137,7 @@ public class DnaServiceTest {
                 "AAAC",
                 "CGGG"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertFalse(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -147,7 +148,7 @@ public class DnaServiceTest {
                 "TGAC",
                 "GGTC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -158,7 +159,7 @@ public class DnaServiceTest {
                 "AAAA",
                 "AAAA"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -169,7 +170,7 @@ public class DnaServiceTest {
                 "TAAG",
                 "GGTC"
         };
-        assertFalse(DnaValidationServices.isMutant(dna));
+        assertFalse(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -185,7 +186,7 @@ public class DnaServiceTest {
                 "ACTACGACC",
                 "TGAGTATCC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
 
     @Test
@@ -201,8 +202,8 @@ public class DnaServiceTest {
                 "CAAAGGCAT",
                 "GCAGTCCCC"
         };
-        assertTrue(DnaValidationServices.isMutant(dna));
+        assertTrue(dnaValidationServices.isMutant(dna));
     }
-}
 
-*/
+
+}

@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 @Service
 public class DnaValidationServices {
 
-    private static DnaValidationRepository dnaValidationRepository;
+    private  DnaValidationRepository dnaValidationRepository;
 
     public DnaValidationServices(DnaValidationRepository dnaValidationRepository) {
         this.dnaValidationRepository = dnaValidationRepository;
     }
 
-    public boolean isMutant(String[] dna) {
+    public  boolean isMutant(String[] dna) {
         if (!isDNAChainValid(dna)) return false;
 
         Optional<DnaValidation> dnaValidationBD = dnaValidationRepository.findByDna(dna);
@@ -33,7 +33,7 @@ public class DnaValidationServices {
         return isMutant;
     }
 
-    private static boolean isDNAChainValid(String[] dna) {
+    private  boolean isDNAChainValid(String[] dna) {
         var dnaBase = Arrays.stream(DNALetters.values())
                 .map(Enum::name)
                 .collect(Collectors.joining());
@@ -42,14 +42,14 @@ public class DnaValidationServices {
                 && !String.join("", dna).toUpperCase().matches(regex);
     }
 
-    private long countMatchMutantSequence(List<String[]> dnaChainsList) {
+    private  long countMatchMutantSequence(List<String[]> dnaChainsList) {
         return dnaChainsList.stream()
                 .flatMap(Arrays::stream)
                 .filter(this::hasMutantSequence)
                 .count();
     }
 
-    private boolean hasMutantSequence(String sequence) {
+    private  boolean hasMutantSequence(String sequence) {
         for (int i = 0; i <= sequence.length() - MutantProperties.DEFAULT_SEQUENCE_SIZE_MUTANT; i++) {
             char currentChar = sequence.charAt(i);
             boolean isMutant = true;
@@ -64,7 +64,7 @@ public class DnaValidationServices {
         return false;
     }
 
-    private static List<String[]> getDnaChains(String[] dnaHorizontal) {
+    private List<String[]> getDnaChains(String[] dnaHorizontal) {
         int n = dnaHorizontal.length;
         String[] dnaVertical = new String[n];
         List<String[]> dnaChainsList = new ArrayList<>();
@@ -82,7 +82,7 @@ public class DnaValidationServices {
         return dnaChainsList;
     }
 
-    private static List<String[]> getDiagonals(String[] dna, int n) {
+    private List<String[]> getDiagonals(String[] dna, int n) {
         List<String[]> diagonals = new ArrayList<>();
 
         for (int i = 0; i <= n - 4; i++) {
@@ -98,7 +98,7 @@ public class DnaValidationServices {
         return diagonals;
     }
 
-    private static String[] extractDiagonal(String[] dna, int startX, int startY, int dx, int dy, int n) {
+    private String[] extractDiagonal(String[] dna, int startX, int startY, int dx, int dy, int n) {
         StringBuilder diagonal = new StringBuilder();
         int x = startX;
         int y = startY;
