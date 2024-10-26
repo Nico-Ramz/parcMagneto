@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@SpringBootTest // Inicia el contexto de Spring completo
+@SpringBootTest 
 public class DnaValidationServiceTest {
 
     @Autowired
@@ -115,9 +115,6 @@ public class DnaValidationServiceTest {
         assertFalse(dnaValidationServices.isMutant(dna));
     }
 
-
-    // ====================================================================================================
-    // Tests brindados por el profesor
     @Test
     public void testMutant1() {
         String[] dna = {
